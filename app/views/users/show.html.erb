@@ -2,6 +2,9 @@
   <h3><%= @user.username %></h3>
 </div>
 
+
+<% if current_user.id == @user.id %>
+
 <a href="/photos/new" class="btn btn-lg btn-success">New Photo</a>
 
 <p></p>
@@ -39,3 +42,5 @@
   </div>
 </div>
 
+<% else %>
+<% end %>

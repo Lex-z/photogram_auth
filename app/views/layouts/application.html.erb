@@ -43,6 +43,12 @@
           <li><a href="/users">Users</a></li>
           <li><a href="/photos">Photos</a></li>
           <li><a href="/likes">Likes</a></li>
+
+          <% if current_user.present? %>
+          <li><a href="/users/<%= current_user.id %>">My Photos</a></li>
+          <% else %>
+          <% end %>
+
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
