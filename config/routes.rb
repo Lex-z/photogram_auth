@@ -108,4 +108,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  # Routes for the Users resource:
+
+  # READ
+  get "/users", :controller => "users", :action => "index"
+
 end
