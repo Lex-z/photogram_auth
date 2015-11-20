@@ -29,9 +29,39 @@
           <a href="/photos/<%= photo.id %>">
             <img src="<%= photo.image %>" class="img-responsive">
           </a>
-          <%= photo.caption %>
 
-          <!-- comment section -->
+          <!-- captions text -->
+          <p></p>
+          <p>
+            <%= photo.caption %>
+          </p>
+
+          <!-- like button -->
+
+          <form action="/create_like" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <input type="hidden" name="photo_id" value="<%= photo.id %>">
+
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+            <button class="btn btn-link">
+              <i class="fa fa-heart-o"></i>
+            </button>
+            <small class="text-muted">
+              <% if photo.fans.pluck(:username).to_sentence == "" %>
+              be the first to like this
+              <% else %>
+              <%= photo.fans.pluck(:username).to_sentence %>
+              liked this
+              <% end %>
+            </small>
+          </form>
+
+          <hr>
+
+          <!-- comment body section -->
 
           <% @comments.each do |comment| %>
           <% if comment.photo_id == photo.id %>
@@ -40,7 +70,7 @@
             <li class="media">
               <div class="media-body">
                 <a href="/users/<%= comment.user_id %>">
-                <%= comment.user.username %>
+                  <%= comment.user.username %>
                 </a>
                 <%= time_ago_in_words(comment.updated_at) %>
                 <%= comment.body %>
@@ -57,12 +87,12 @@
 
             <!-- input for photo_id-->
             <div class="form-group">
-              <input type="hidden" id="photo_id" name="photo_id" placeholder="" class="form-control" value="<%= photo.id %>">
+              <input type="hidden" name="photo_id" value="<%= photo.id %>">
             </div>
 
             <!-- input for user_id-->
             <div class="form-group">
-              <input type="hidden" id="user_id" name="user_id" placeholder="" class="form-control" value="<%= current_user.id %>">
+              <input type="hidden" name="user_id" value="<%= current_user.id %>">
             </div>
 
             <!-- input for body-->
