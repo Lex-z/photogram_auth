@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.all
+    @photos = Photo.all.reverse
+    #actually want to sort by last update...
   end
 
   def show
