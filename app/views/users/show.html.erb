@@ -20,9 +20,6 @@
       </tr>
 
       <% @photos.each do |photo| %>
-
-      <% if photo.user.id == @user.id %>
-
       <tr>
         <td><%= photo.caption %></td>
         <td>
@@ -35,8 +32,6 @@
           <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
-      <% else %>
-      <% end %>
       <% end %>
     </table>
   </div>

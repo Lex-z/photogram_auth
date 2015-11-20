@@ -1,5 +1,5 @@
 class MylikesController < ApplicationController
   def index
-    @photos = Photo.all
+    @photos = Photo.where(:id => current_user.liked_photos)
   end
 end
