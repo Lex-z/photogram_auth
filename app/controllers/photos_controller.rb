@@ -27,7 +27,14 @@ class PhotosController < ApplicationController
   end
 
   def edit
+
     @photo = Photo.find(params[:id])
+
+    if current_user != @photo.user
+      redirect_to "/photos", :alert => "Go Away!"
+    else
+    end
+
   end
 
   def update
