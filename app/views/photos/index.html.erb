@@ -86,11 +86,17 @@
             <ul class="media-list">
               <li class="media">
                 <div class="media-body">
-                  <a href="/users/<%= comment.user_id %>">
-                    <%= comment.user.username %>
-                  </a>
-                  <%= time_ago_in_words(comment.updated_at) %>
+
+                  <h6 class="media-heading">
+                    <a href="/users/<%= comment.user_id %>">
+                      <%= comment.user.username %>
+                    </a>
+                    <small>
+                      <%= time_ago_in_words(comment.updated_at) %>
+                    </small>
+                  </h6>
                   <%= comment.body %>
+
                 </div>
               </li>
             </ul>
