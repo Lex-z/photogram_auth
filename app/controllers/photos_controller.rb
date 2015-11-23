@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.all.reverse
     @comments = Comment.all
+    @likes = Like.all
     #actually want to sort by last update...
   end
 
